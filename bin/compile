@@ -114,6 +114,11 @@ HEROKU_PLUGIN="HerokuPlugin.scala"
 mkdir -p "$SBT_USER_HOME/.sbt/plugins"
 cp $OPT_DIR/$HEROKU_PLUGIN $SBT_USER_HOME/.sbt/plugins/$HEROKU_PLUGIN
 
+# removing all SNAPSHOT dependencies
+for DIR in $CACHED_DIRS ; do
+  find $DIR -iname \*SNAPSHOT.jar -exec echo "Deleting SNAPSHOT dependency" {} \; -exec rm {} \;
+done
+
 # build app
 echo "-----> Running: sbt $SBT_TASKS"
 test -e "$SBT_BINDIR"/sbt.boot.properties && PROPS_OPTION="-Dsbt.boot.properties=$SBT_BINDIR/sbt.boot.properties"
