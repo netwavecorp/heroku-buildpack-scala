@@ -106,8 +106,8 @@ fi
 
 # copy in heroku sbt plugin
 HEROKU_PLUGIN="HerokuPlugin.scala"
-mkdir -p "$SBT_USER_HOME/.sbt/plugins"
-cp $OPT_DIR/$HEROKU_PLUGIN $SBT_USER_HOME/.sbt/plugins/$HEROKU_PLUGIN
+mkdir -p "$SBT_USER_HOME/.sbt/$SBT_VERSION/plugins"
+cp $OPT_DIR/$HEROKU_PLUGIN $SBT_USER_HOME/.sbt/$SBT_VERSION/plugins/$HEROKU_PLUGIN
 
 # removing all SNAPSHOT dependencies
 for DIR in $CACHED_DIRS ; do
