@@ -79,6 +79,7 @@ SBT_TASKS="clean update compile compile:stage"
 ## If a SBT_PROJECT has been configured, we compile this project only
 if [ -z "$SBT_PROJECT" ]; then
 	SBT_TASKS="\"project $PROJECT\" $SBT_TASKS"
+fi
 
 if [ ! -d .ivy2/cache ]; then
    mkdir -p .ivy2/cache
