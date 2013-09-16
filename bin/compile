@@ -76,6 +76,9 @@ SBT_PROPS_URL="http://s3.amazonaws.com/heroku-jvm-langpack-scala/$SBT_PROPS"
 ## instead.
 SBT_TASKS="clean update compile compile:stage"
 
+## If a SBT_PROJECT has been configured, we compile this project only
+if [ -z "$SBT_PROJECT" ]; then
+	SBT_TASKS="\"project $PROJECT\" $SBT_TASKS"
 
 if [ ! -d .ivy2/cache ]; then
    mkdir -p .ivy2/cache
